@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# OK: shellcheck
+
+[ "$(uname)" != "Darwin" ] && echo 1>&2 Command only supposed to be run on OSX. && exit 1
+
+sudo killall -HUP mDNSResponder
+sudo killall mDNSResponderHelper
+sudo dscacheutil -flushcache
+
